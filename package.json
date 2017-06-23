@@ -1,0 +1,21 @@
+{
+  "name": "cookie-talk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "bundle": "node_modules/.bin/browserify index.js > dist/cookie-talk.js -s cookie-talk && echo 'Bundled'",
+    "minify": "node_modules/.bin/uglifyjs dist/cookie-talk.js -o dist/cookie-talk.min.js -m -c && echo 'Minified'",
+    "build": "node_modules/.bin/yarn bundle && node_modules/.bin/yarn minify",
+    "size": "ls -lh dist/cookie-talk.min.js"
+  },
+  "dependencies": {
+    "js-base64": "^2.1.9"
+  },
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "mocha": "^3.4.2",
+    "uglify-js": "^3.0.19",
+    "yarn": "^0.24.5"
+  }
+}
