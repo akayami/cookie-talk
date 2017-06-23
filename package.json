@@ -17,5 +17,9 @@
     "mocha": "^3.4.2",
     "uglify-js": "^3.0.19",
     "yarn": "^0.24.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akayami/cookie-talk.git"
   }
 }
