@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Window 2</title>
+		<script src="cookie-talk.min.js"></script>
+	</head>
+	<body>
+		<div>
+		Read here:
+		<textarea id="output"></textarea>
+		</dive>
+		<hr>
+		<div>
+		Write Here:
+		<textarea id="input"></textarea>
+		</div>
+	</body>
+	<script>
+
+		var ct = cookieTalk.factory();
+		var channel1 = new ct('channel1');
+
+		var monitor = document.getElementById('output');
+		channel1.onMessage(function(message) {
+			monitor.value = message;
+		})
+
+		var channel2 = new ct('channel2');
+		var editor = document.getElementById('input');
+		editor.addEventListener('keyup', function(e) {
+			channel2.send(editor.value, function() {
+			//	console.log('Sent!');
+			});
+		});
+	</script>
+
+</html>

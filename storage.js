@@ -12,7 +12,9 @@ module.exports = function(channel) {
 			if(this.buffer.length && !this.store.getItem(this.channel)) {
 				var m = this.buffer.shift();
 				this.store.setItem(this.channel, m[0]);
-				m[1]();
+				if(typeof m[1] === "function") {
+					m[1]();
+				}
 			}
 			semaphore = false;
 		}
@@ -31,7 +33,9 @@ module.exports = function(channel) {
 			var m = this.store.getItem(this.channel);
 			if(m !== null) {
 				this.store.removeItem(this.channel);
-				cb(m);
+				if(typeof cb === "function") {
+					cb(m);
+				}
 			}
 		}.bind(this))
 	}
